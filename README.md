@@ -1,8 +1,11 @@
 <!-- 告诉项目的一些相关信息 -->
 # 描述项目的详细信息
+
+使用idea把代码上传到码云上，比 VScode 更简单方便
 ## 【主流开源协议之间有何异同？】(https://blog.csdn.net/xiaodaima2016/article/details/83645854)
 
 ## 用传统方式（命令行）把修改过后的代码上传到码云
+(使用 VSCode 编写代码时)
 1.git add .
 2.git commit -m "提交信息"
 3.git push
