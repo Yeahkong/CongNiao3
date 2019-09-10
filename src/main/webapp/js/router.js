@@ -11,13 +11,14 @@ import SearchContainer from '../components/tabbar/SearchContainer.vue'
 //创建路由对象
 var router = new VueRouter({
     routes:[  //配置路由规则
+        {path:'/',redirect:'/home'},
         { path: '/home',component: HomeContainer },
         { path: '/member',component: MemberContainer },
         { path: '/shopcar',component: ShopcarContainer },
         { path: '/search',component: SearchContainer },
     ],
     linkActiveClass:'mui-active'  //覆盖默认的路由高亮的类，原本默认的叫做
-    // router-link-active 切换的时候才显示
+    // router-link-active 点击切换的时候才显示
 })
 
 //通过ES6语法暴露路由对象
