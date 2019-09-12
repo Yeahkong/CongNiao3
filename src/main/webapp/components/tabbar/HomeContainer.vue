@@ -16,17 +16,17 @@
 
     <!--九宫格改造成六宫格-->
     <ul class="mui-table-view mui-grid-view mui-grid-9 ">
-      <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
+      <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><router-link to="/home/newslist">
         <img src="../../../../images/menu1.jpg"alt="">
-        <div class="mui-media-body">新闻资讯</div></a></li>
+        <div class="mui-media-body">新闻资讯</div></router-link></li>
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
-        <img src="../../../../images/menu2.png"alt="">
+        <img src="../../../../images/menu7.png"alt="">
         <div class="mui-media-body">图片分享</div></a></li>
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
         <img src="../../../../images/menu3.png"alt="">
         <div class="mui-media-body">商品购买</div></a></li>
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
-        <img src="../../../../images/menu4.jpg"alt="">
+        <img src="../../../../images/menu8.jpg"alt="">
         <div class="mui-media-body">留言反馈</div></a></li>
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
         <img src="../../../../images/menu5.png"alt="">
@@ -57,8 +57,8 @@ import { Toast } from 'mint-ui'
     },
     methods:{
       getLunbotu(){ //获取轮播图数据的方法
-        this.$http.get('http://vue.studyit.io/api/getlunbo').then(result => {
-        // this.$http.get('http://jsonplaceholder.typicode.com/todos').then(result => {
+        // this.$http.get('api/getlunbo').then(result => {
+        this.$http.get('http://jsonplaceholder.typicode.com/todos').then(result => {
           console.log(result.body);
 
          /* if(result.body.status === 0){

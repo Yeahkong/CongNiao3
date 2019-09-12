@@ -6,11 +6,20 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 //1.2 安装路由
 Vue.use(VueRouter)
+import moment from 'moment'
+
+//定义全局过滤器
+Vue.filter('dateFormat',function (dataStr,pattern = "yyyy-MM-DD HH:mm:ss") {
+    return  moment(dataStr).format(pattern)
+})
+
 
 //2.1导入 vue-resource
 import VueResource from 'vue-resource'
 //2.2安装 vue-resource
 Vue.use(VueResource)
+//设置请求的根路径
+Vue.http.options.root = 'http://vue.studyit.io';//只能放在 VueResource 后面
 
 // 导入Mint-UI
 // import MintUI from 'mint-ui'
