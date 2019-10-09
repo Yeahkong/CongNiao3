@@ -1,0 +1,175 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>无缝轮播图</title>
+    <script src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 600px;
+            margin: 0 auto;
+            margin-top: 100px;
+            text-align: center;
+        }
+        .carouselContainer {
+            width: 500px;
+            height: 300px;
+            border: 1px solid #eee;
+            margin: 0 auto;
+            margin-top: 20px;
+            overflow: hidden;
+            position: relative;
+            border-radius: 5px;
+        }
+        #carousel {
+            font-size: 0px;
+            display: flex;
+        }
+        .arrowItems {
+            position: absolute;
+            width: 100%;
+            font-size: 60px;
+            display: flex;
+            top: 50%;
+            justify-content: space-between;
+            height: 60px;
+            transform: translateY(-50%);
+        }
+        .arrowItems div {
+            width: 30px;
+            text-align: center;
+            line-height: 46px;
+            vertical-align: middle;
+            background: rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            color: rgba(255, 255, 255, 0.4);
+        }
+        .arrowItems div:hover {
+            background: rgba(0, 0, 0, 0.5);
+            color: rgba(255, 255, 255, 0.6);
+        }
+        .dots {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 25px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 10px;
+            padding: 3px;
+        }
+        .dot {
+            width: 12px;
+            height: 12px;
+            background: #fff;
+            float: left;
+            border-radius: 6px;
+            margin: 0 3px;
+        }
+        .current {
+            background: red;
+        }
+
+    </style>
+</head>
+<body>
+<body>
+
+<div class="container">
+    <h2>无缝轮播图</h2>
+    <div class="carouselContainer">
+        <ul id="carousel">
+            <li><img src="../static/images/first.png"></li>
+            <li><img src="../static/images/图层.jpg"></li>
+            <li><img src="../static/images/battle.png"></li>
+            <li><img src="../static/images/first.png"></li>
+            <li><img src="../static/images/first.png"></li>
+            <li><img src="../static/images/first.png"></li>
+        </ul>
+        <div class="arrowItems">
+            <div class="left">‹</div>
+            <div class="right">›</div>
+        </div>
+        <div class="dots">
+            <div class="dot current"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+    </div>
+</div>
+
+</body>
+<script type="text/javascript">
+
+    var picIndex = 0;
+    //为小圆点绑定鼠标经过事件
+    $('.dots div').mouseover(function(){
+        picIndex = $(this).index();
+        var left = -(picIndex) * 500 + 'px';
+        //鼠标经过小圆点时，切换对应的图片
+        $('#carousel').stop().animate({'margin-left': left});
+        //当前小圆点为红色，其他为白色
+        $(this).addClass('current').siblings().removeClass('current');
+    });
+
+
+    //自动播放
+    autoplayCarousel();
+
+    var timeId;
+    function autoplayCarousel(){
+        timeId = setInterval(function(){
+            $('.arrowItems .right').click();
+        }, 1000)
+    }
+
+    //右边按钮
+    $('.arrowItems .right').click(function(){
+
+        if(picIndex == $('#carousel li').length - 1) {
+            picIndex = 0;
+            $('#carousel').css({'margin-left': '0px'});
+        }
+        picIndex ++;
+        var left = -(picIndex) * 500 + 'px';
+        $('#carousel').stop().animate({'margin-left': left});
+
+        //控制小圆点
+        if(picIndex == $('#carousel li').length - 1) {
+            $('.dots div').eq(0).addClass('current').siblings().removeClass('current');
+        }else {
+            $('.dots div').eq(picIndex).addClass('current').siblings().removeClass('current');
+        }
+    });
+    //左边按钮
+    $('.arrowItems .left').click(function(){
+
+        if(picIndex == 0) {
+            picIndex = $('#carousel li').length - 1;
+            $('#carousel').css({'margin-left': -($('#carousel li').length - 1) * 500 + 'px'});
+        }
+        picIndex --;
+        var left = -(picIndex) * 500 + 'px';
+        $('#carousel').stop().animate({'margin-left': left});
+
+        //控制小圆点
+        if(picIndex == $('#carousel li').length - 1) {
+            $('.dots div').eq(0).addClass('current').siblings().removeClass('current');
+        }else {
+            $('.dots div').eq(picIndex).addClass('current').siblings().removeClass('current');
+        }
+    });
+
+    $('.carouselContainer').mouseover(function(){
+        clearInterval(timeId);
+    });
+    $('.carouselContainer').mouseout(function(){
+        autoplayCarousel();
+    });
+</script>
+<html>

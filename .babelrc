@@ -3,7 +3,7 @@
      "plugins": ["transform-runtime",["component", [
        {
         "libraryName": "mint-ui",
-        "style" : true,
+        "style" : true
        }
      ]
     ]
