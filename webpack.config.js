@@ -21,6 +21,11 @@ module.exports={
             /*assetsSubDirectory: 'static',
             assetsPublicPath: './'*/
         }),
+     /*   new htmlWebpackPlugin({//第二个页面,也要指定此页面main.js文件
+            template:path.join(__dirname,'./src/index1.html'),//指定模板文件的路径
+            /!*assetsSubDirectory: 'static',
+            assetsPublicPath: './'*!/
+        }),*/
 ],
     resolve : {
         //创建 import 或 require 的别名，来确保模块引入变得更简单。
@@ -36,8 +41,8 @@ module.exports={
             { test : /\.css$/,use:['style-loader', 'css-loader'] },//处理 css 文件的 loader ，use 为数组
             { test : /\.less$/,use:['style-loader', 'css-loader','less-loader'] },//处理 less 文件的 loader ，use 为数组
             { test : /\.scss$/,use:['style-loader', 'css-loader','sass-loader'] },//处理 scss 文件的 loader ，use 为数组
-            { test : /\.(jpg|png|gif|bmp|jpeg)$/,use:'url-loader?limit=9232633453440&name=[hash:8]-[name].[ext]' },//&为连接符
-            { test:/\.(ttf|eot|svg|woff|woff2)$/,use:'url-loader'},//处理字体文件的 url-loader
+            { test : /\.(jpg|png|gif|bmp|jpeg)$/,use:'url-loader?limit=9999232633453440&name=[hash:8]-[name].[ext]' },//&为连接符
+            { test:/\.(ttf|eot|svg|woff|woff2)$/,use:'file-loader'},//处理字体文件的 url-loader
             //引入bootstrap样式的时候还会引入字体样式
             { test:/\.vue$/,use:'vue-loader'},//处理 .vue 文件的loader
         ]
@@ -53,3 +58,4 @@ module.exports={
     }
 
 }
+

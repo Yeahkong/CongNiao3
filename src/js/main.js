@@ -1,32 +1,22 @@
 // 入口文件
-import Vue from 'vue'
-import 'jquery/dist/jquery.min.js'
-/*import  'bootstrap/dist/css/bootstrap.min.css'
-import 'bootstrap/dist/js/bootstrap.min.js'*/
-import '../css/index.css'
-import VueAwesomeSwiper from 'vue-awesome-swiper'
-Vue.use(VueAwesomeSwiper)
 
+/*var Vue = require('vue')
+var VueRouter = require('vue-router')
+Vue.use(VueRouter)*/
+//也可以用下面的方法
+import Vue from 'vue'
 //1.1 导入路由的包
 import VueRouter from 'vue-router'
 //1.2 安装路由
 Vue.use(VueRouter)
-import moment from 'moment'
-
-import {Swiper} from 'swiper'
-
-//定义全局过滤器
-Vue.filter('dateFormat',function (dataStr,pattern = "YYYY-MM-DD HH:mm:ss") {
-    return  moment(dataStr).format(pattern)
-})
-
-// require styles
+/*import 'jquery/dist/jquery.min.js'
+import 'bootstrap/dist/js/bootstrap.min.js'
+import  'bootstrap/dist/css/bootstrap.min.css'*/
 
 
-Vue.use(VueAwesomeSwiper)
-import 'vue-awesome-swiper/dist/vue-awesome-swiper.js'
 
-
+// 1.3导入自己的 router.js 路由模块
+import router from './router.js'
 
 //2.1导入 vue-resource
 import VueResource from 'vue-resource'
@@ -34,33 +24,48 @@ import VueResource from 'vue-resource'
 Vue.use(VueResource)
 // 导入Mint-UI
 import MintUI from 'mint-ui'
-// import 'mint-ui/lib/style.css'
 Vue.use(MintUI)
+
+
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+Vue.use(ElementUI);
 
 // 导入MUI的样式
 import '../lib/mui/css/mui.css'
+import '../lib/mui/js/mui.min.js'
 
-/*import axios from 'axios'
-import VueAxios from 'vue-axios'
-
-Vue.use(VueAxios, axios)*/
 // 按需导入 Mint-UI 中的组件
-import { Header, Swipe, SwipeItem ,Button} from 'mint-ui'
-import 'mint-ui/lib/style.css'     
+import { Swipe, SwipeItem } from 'mint-ui'
+// import 'mint-ui/lib/style.css'
 //老师没有引入样式能显示，而我不引入就不显示样式，.babelrc文件设置了也没有用
-Vue.component( Header.name, Header)
 Vue.component( Swipe.name, Swipe)
-Vue.component(   SwipeItem.name, SwipeItem) //用以下也可以
-// Vue.component(   'mt-swipe-item', SwipeItem)
-Vue.component( Button.name, Button)
+Vue.component( SwipeItem.name, SwipeItem) //用以下也可以
+import 'mint-ui/lib/style.css'
 
+import Video from 'video.js'
+import 'video.js/dist/video-js.css'
 
-// 1.3导入自己的 router.js 路由模块
-import router from './router.js'
+Vue.prototype.$video = Video
+
 import app from '../../App.vue'
+// import app from '../../CongNiao.vue'
+// import app from '../../CongNiao1.vue'
 var vm = new Vue({
     el:'#app',
     render: c => c(app),
     router  //1.4挂载路由对象到 vm 实例上
 
 })
+/*function check() {
+    var userAgentInfo=navigator.userAgent;
+    var Agents =new Array("Android","iPhone","SymbianOS","Windows Phone","iPad","iPod");
+    var flag=true;
+    for(var v=0;v<Agents.length;v++) {
+        if(userAgentInfo.indexOf(Agents[v])>0) {
+            flag=false;
+            break;
+        }
+    }
+    return flag;
+}*/

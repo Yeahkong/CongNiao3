@@ -3,17 +3,16 @@
 import VueRouter from 'vue-router'
 
 // 导入对应的路由组件
-import Register from "../components/Register.vue";
-import Jiameng from "../components/Jiameng.vue";
 import Images from "../components/Images.vue"
+import Videos from "../components/Videos.vue"
+/*import Images from "../components/Image1.vue"
+import Videos from "../components/Video1.vue"*/
 //创建路由对象
 var router = new VueRouter({
     routes:[  //配置路由规则
-        {path:'/',redirect:'/home'},
-        {path:'/home/register',component:Register},
-        {path:'/home/jiameng',component:Jiameng},
-        {path:'/home/jiameng',component:Jiameng},
+        {path:'/',redirect:'/home/images'},
         {path:'/home/images',component:Images},
+        {path:'/home/video',component:Videos},
     ],
 })
 
